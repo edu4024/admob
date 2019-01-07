@@ -1,0 +1,4 @@
+#Mon Jan 07 04:30:28 EAT 2019
+base.0=C\:\\programming\\adMob\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\46
+path.0=classes.dex
+renamed.0=classes.dex
