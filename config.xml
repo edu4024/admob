@@ -4,14 +4,13 @@
     <description>
         mobile ads.
     </description>
-    <!--ad mob id -- ca-app-pub-6781448910011955~8160066013 -->
-    <!-- project id admob-227911. -->
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Apache Cordova Team
     </author>
     <content src="index.html" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <access origin="*" />
+    <allow-navigation href="data:*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
@@ -25,5 +24,6 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
+    <plugin name="cordova-admob" spec="^5.1.0" />
     <engine name="android" spec="^7.1.4" />
 </widget>

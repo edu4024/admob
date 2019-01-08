@@ -13,6 +13,19 @@ export default {
   },
   data() {
     return {}
+  },
+  methods: {
+    onDeviceReady: function () {
+      document.removeEventListener('deviceready', onDeviceReady, false)
+        this.initAds()
+        admob.createBannerView()
+        admob.requestInterstitialAd()
+    }
+  },
+  mounted() {
+    if ('cordova' in window) {
+      document.addEventListener('deviceready', this.onDeviceReady, false)
+    }
   }
 }
 </script>

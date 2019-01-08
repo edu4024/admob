@@ -7,13 +7,13 @@ import ProductInfo from './../components/ProductInfo'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
+  mode: 'hash',
+  base: __dirname,
   routes: [
     {
       path: '/',
       name: 'ProductList',
-      component: ProductList,
-      // children: []
+      component: ProductList
     },
     {
       path: '/info',

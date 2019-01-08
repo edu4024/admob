@@ -17,12 +17,5 @@ new Vue({
   router,
   store,
   components: { App },
-  template: '<App/>',
-  methods:{
-        init:function() {
-            this.status = true;
-        }
-    }
+  template: '<App/>'
 })
-
-// document.addEventListener('deviceready', app.init);

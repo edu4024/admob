@@ -42,9 +42,6 @@ computed: {
   }
 },
 methods: {
-  // onDeviceReady: function () {
-  //   admob.createBannerView({publisherId: "ca-app-pub-XXXXXXXXXXXXXXXX/BBBBBBBBBB"});
-  // },
   info: function (index) {
     this.$store.dispatch('setProduct', index)
     this.$router.push('/info')
