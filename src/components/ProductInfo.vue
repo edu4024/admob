@@ -13,11 +13,14 @@
                 <p>{{product.content}}</p>
               </v-card-text>
               <v-card-actions class="btn">
-                <v-btn small @click="favorite()">Favorite</v-btn>
+                <v-btn small
+                 >Favorite</v-btn>
                 <v-spacer/>
-                <v-btn small @click="share()">Share</v-btn>
+                <v-btn small
+                 >Share</v-btn>
                 <v-spacer/>
-                <v-btn small @click="like()">Like</v-btn>
+                <v-btn small
+                 >Like</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
@@ -27,6 +30,7 @@
 <script>
 import Toolbar from './Toolbar.vue'
 import ProductItem from './ProductItem'
+import admobid from './../adsConfig/config.js'
 export default {
 name: 'ProductInfo',
 components: {
@@ -42,7 +46,14 @@ computed: {
     return this.$store.getters.getProduct
     }
 },
-methods: {}
+methods: {},
+beforeMount() {
+  // this will load a full screen ad before open page
+  window.AdMob.prepareInterstitial({
+      adId: admobid.interstitial,
+      autoShow: true
+    })
+}
 }
 </script>
 <style scoped>

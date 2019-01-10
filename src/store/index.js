@@ -41,7 +41,6 @@ export default new Vuex.Store({
   actions: {
     setProduct ({commit, state}, payload) {
       commit('setProduct', payload)
-      console.log(state.product)
     }
   },
   getters: {

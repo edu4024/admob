@@ -6,6 +6,7 @@
   </div>
 </template>
 <script>
+import admobid from './../adsConfig/config.js'
 export default {
   name: "Toolbar",
   data(){
@@ -16,6 +17,10 @@ export default {
   },
   methods: {
     back: function () {
+      window.AdMob.prepareInterstitial({
+          adId: admobid.interstitial,
+          autoShow: true
+        })
       this.$router.push('/')
     }
   }

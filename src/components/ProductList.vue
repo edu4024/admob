@@ -5,6 +5,7 @@
 </template>
 <script>
 import ProductItem from './ProductItem.vue'
+import admobid from './../adsConfig/config.js'
 export default {
   name: 'ProductList',
   components: {
@@ -16,40 +17,39 @@ export default {
   computed: {},
   methods: {
     onDeviceReady: function () {
-      document.removeEventListener('deviceready', onDeviceReady, false)
-        this.initAds()
-        admob.createBannerView()
-        admob.requestInterstitialAd()
+        this.initApp()
     },
-     registerAdEvents: function () {
-      document.addEventListener(admob.events.onAdLoaded, onAdLoaded);
-      document.addEventListener(admob.events.onAdFailedToLoad, function (e) {});
-      document.addEventListener(admob.events.onAdOpened, function (e) {});
-      document.addEventListener(admob.events.onAdClosed, function (e) {});
-      document.addEventListener(admob.events.onAdLeftApplication, function (e) {});
-      document.addEventListener(admob.events.onInAppPurchaseRequested, function (e) {});
-    },
-    initAds: function() {
-     if (admob) {
-       let adPublisherIds = {
-         android : {
-           banner : "ca-app-pub-6781448910011955/1827426103",
-           interstitial : "ca-app-pub-6781448910011955~8160066013"
-         }
-       }
-       let admobid = adPublisherIds.android
-        admob.setOptions({
-          publisherId:      admobid.banner,
-          interstitialAdId: admobid.interstitial
+    registerAdEvents: function () {},
+    initApp: function() {
+        if (!window.AdMob ) {
+        }
+        // this will create a banner on startup
+      window.AdMob.createBanner({
+          adId: admobid.banner,
+          position: window.AdMob.AD_POSITION.BOTTOM_CENTER,
+          overlap: false,
+          offsetTopBar: false,
+          bgColor: 'black'
         })
-
-        registerAdEvents()
-
-      } else {
-        console.log('AdMobAds plugin not ready');
-      }
+    },
+    ratingUser: function () {
+      let appId = 'io.admob'
+      LaunchReview.launch(() => {
+        console.log('Successfully launched store app')
+      }, (err) => {
+        console.log('Error launching store app: ' + err)
+      }, appId)
     }
-}
+  },
+  mounted: function ()  {
+    if ('cordova' in window) {
+      document.addEventListener('deviceready', this.onDeviceReady, false)
+    } else {
+      console.log('no device ready')
+    }
+    this.ratingUser()
+  },
+  beforeMount: function () {}
 }
 </script>
 <style scoped>
